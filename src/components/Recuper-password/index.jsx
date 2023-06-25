@@ -4,15 +4,17 @@ import Modal from 'react-bootstrap/Modal';
 // import { RecoverPasswordFunc } from '../../service/Authentication';
 import PropTypes from 'prop-types';
 import { RecoverPassword } from '../../service/Authentication';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Alert, Col, Form, Row } from 'react-bootstrap';
 import img2 from '../Login/images/avatar.png'
 import { useState } from 'react';
+import Spinner from '../Spinner';
 
 
 function RecoverPasswordModal({ show, setShow }) {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [username, setUsername] = useState('');
+    const [loading, setloading] = useState(false);
 
     const handleClose = () => setShow(false);
     // const handleShow = () => setShow(true);
@@ -20,25 +22,37 @@ function RecoverPasswordModal({ show, setShow }) {
 
     const RecoverPasswordFunc = async () => {
 
-        const dataRecover = await RecoverPassword(username);
-        if (dataRecover) {
-            setErrorMessage('Foi enviado link para recuperação no seu e-mail.');
+        setloading(true);
 
-        }
+         await RecoverPassword(username)
+       
+           setloading(false);
+           setErrorMessage(true);
+       
 
     }
 
     return (
         <>
+            {errorMessage && <Alert
+                variant="warning"
+                onClose={() => setErrorMessage(false)}
+                dismissible
+            >
+                <p>
+                    foi enviado para seu e-mail link para alteração da senha 
+                </p>
+            </Alert>
+            }
             <Modal
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
                 centered
-                // style={{ 
-                //  background:"#064105", 
-                //   }}
+                // style={{
+                //     background: "#064105",
+                // }}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Recuperar senha</Modal.Title>
@@ -51,7 +65,7 @@ function RecoverPasswordModal({ show, setShow }) {
                             </Col>
                             <Col>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Digite seu usuario"
+                                    <Form.Control type="email" placeholder="Digite seu e-mail"
                                         value={username}
                                         onChange={(e) => setUsername(e.target.value)}
                                     />
@@ -69,7 +83,9 @@ function RecoverPasswordModal({ show, setShow }) {
                         Fechar
                     </Button>
                 </Modal.Footer>
+            {loading && <Spinner />}
             </Modal>
+
         </>
     );
 }
