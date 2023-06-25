@@ -19,6 +19,8 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setloading] = useState(false);
+  const [errorMessageField, setErrorMessageField] = useState('');
+
 
 
   const navigate = useNavigate();
@@ -29,15 +31,14 @@ const LoginScreen = () => {
 
 
   const handleLogin = async (e) => {
-    setloading(true);
     e.preventDefault();
 
     // Realize a validação dos campos aqui
     if (!username || !password) {
-      setErrorMessage('Por favor, preencha todos os campos.');
+      setErrorMessageField('Por favor, preencha todos os campos.');
     } else {
+      setloading(true);
       setErrorMessage('');
-
       // Lógica de autenticação ou redirecionamento após o login
       const resp = await AuthenticatorLogin(username, password);
       if (resp.user) {
@@ -67,7 +68,17 @@ const LoginScreen = () => {
             dismissible
           >
             <p>
-              Email ou senha invalida
+              Email ou senha invalida, tente novamente!
+            </p>
+          </Alert>
+          }
+           {errorMessageField && <Alert
+            variant="danger"
+            onClose={() => setErrorMessage(false)}
+            dismissible
+          >
+            <p>
+              Preecha todos os campos!
             </p>
           </Alert>
           }
