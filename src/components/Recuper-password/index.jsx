@@ -21,13 +21,15 @@ function RecoverPasswordModal({ show, setShow }) {
 
 
     const RecoverPasswordFunc = async () => {
-
         setloading(true);
 
-        await RecoverPassword(username)
+        if(username){
+            await RecoverPassword(username)
+            setloading(false);
+            setShow(false)
+            setErrorMessage(true);
 
-        setloading(false);
-        setErrorMessage(true);
+        }
 
 
     }

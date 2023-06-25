@@ -23,13 +23,12 @@ export const AuthenticatorLogin = (email, senha) => {
 }
 
 export const RecoverPassword = (email) => {
-    const dataRecoverPassWord = firebaseAuth.sendPasswordResetEmail(auth, email) 
-    return dataRecoverPassWord;
+    return firebaseAuth.sendPasswordResetEmail(auth, email);
 }
 
 export const LogOut = () => {
-    const LogOut = firebaseAuth.signOut(auth) 
- return LogOut;
+    return firebaseAuth.signOut(auth);
+ 
   
 
 }

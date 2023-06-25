@@ -12,12 +12,11 @@ const navigate = useNavigate()
     const LogOutFunc = async () =>{
         console.log("entrei na função");
         setloading(true);
-        const dataLogout = await LogOut();
-        if(dataLogout){
+         await LogOut();
             setloading(false);
             navigate("/bem-pay/");
     
-        }
+        
     
     }
   return (
