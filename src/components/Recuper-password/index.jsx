@@ -24,11 +24,11 @@ function RecoverPasswordModal({ show, setShow }) {
 
         setloading(true);
 
-         await RecoverPassword(username)
-       
-           setloading(false);
-           setErrorMessage(true);
-       
+        await RecoverPassword(username)
+
+        setloading(false);
+        setErrorMessage(true);
+
 
     }
 
@@ -40,7 +40,7 @@ function RecoverPasswordModal({ show, setShow }) {
                 dismissible
             >
                 <p>
-                    foi enviado para seu e-mail link para alteração da senha 
+                    foi enviado para seu e-mail link para alteração da senha
                 </p>
             </Alert>
             }
@@ -50,9 +50,9 @@ function RecoverPasswordModal({ show, setShow }) {
                 backdrop="static"
                 keyboard={false}
                 centered
-                // style={{
-                //     background: "#064105",
-                // }}
+            // style={{
+            //     background: "#064105",
+            // }}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Recuperar senha</Modal.Title>
@@ -83,7 +83,7 @@ function RecoverPasswordModal({ show, setShow }) {
                         Fechar
                     </Button>
                 </Modal.Footer>
-            {loading && <Spinner />}
+                {loading && <Spinner />}
             </Modal>
 
         </>

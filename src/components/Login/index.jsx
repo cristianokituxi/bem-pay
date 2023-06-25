@@ -25,8 +25,8 @@ const LoginScreen = () => {
 
 
   const handleShow = () => setShow(true);
-  
-  
+
+
 
   const handleLogin = async (e) => {
     setloading(true);
@@ -43,7 +43,7 @@ const LoginScreen = () => {
       if (resp.user) {
         setloading(false)
         navigate('/bem-pay/home');
- 
+
       } else if (!resp.user) {
         setloading(false)
         setErrorMessage(true);
@@ -55,44 +55,44 @@ const LoginScreen = () => {
     }
   };
 
- 
+
 
   return (
     <>
       <div className='mt-2'>
         <Container>
-       { errorMessage && <Alert  
-        variant="danger" 
-        onClose={() => setErrorMessage(false)}
-        dismissible
-        >
-        <p>
-          Email ou senha invalida
-        </p>
-      </Alert>
-      } 
+          {errorMessage && <Alert
+            variant="danger"
+            onClose={() => setErrorMessage(false)}
+            dismissible
+          >
+            <p>
+              Email ou senha invalida
+            </p>
+          </Alert>
+          }
           <Row className="d-flex justify-content-center align-items-center">
             <Col className='centralize  mt-5' >
               {/* <div className="border border-3 border-primary"></div> */}
-              <Card className="shadow  rounded-3 justify-content-center"  
-             
-                style={{ 
-                background:"#0000", 
-               
-        
-              }}
-                
-                >
+              <Card className="shadow  rounded-3 justify-content-center"
+
+                style={{
+                  background: "#0000",
+
+
+                }}
+
+              >
                 <Card.Body>
                   <div className=" ">
-                    <img src={img1} alt=""  width={200}
-                    style={{
-                      marginLeft: "64px"
-                    }}
+                    <img src={img1} alt="" width={200}
+                      style={{
+                        marginLeft: "64px"
+                      }}
                     />
                     <div className="border border-4 border-warning"></div>
                     <div className="mb-1">
-                      <Form  className="mt-3">
+                      <Form className="mt-3">
                         <Row>
                           <Col xs={2}>
                             <img src={img2} alt='' height={40} />
@@ -127,13 +127,13 @@ const LoginScreen = () => {
                           controlId="formBasicCheckbox"
                         >
                           <Button variant='link' onClick={handleShow}>Esqueceu sua senha?</Button>
-                          
-              
+
+
                         </Form.Group>
                         <div className="d-grid">
                           <Button onClick={handleLogin} variant="warning" type="submit">
-                          <FaSignInAlt  />  Entrar
-                          </Button> 
+                            <FaSignInAlt />  Entrar
+                          </Button>
                         </div>
                       </Form>
                     </div>
@@ -143,13 +143,13 @@ const LoginScreen = () => {
             </Col>
           </Row>
         </Container>
-        
-        { loading &&<Spinner /> }
-        <RecoverPasswordModal show={show}  setShow={setShow}/>
-      </div> 
+
+        {loading && <Spinner />}
+        <RecoverPasswordModal show={show} setShow={setShow} />
+      </div>
     </>
   );
-}; 
+};
 
 export default LoginScreen;
 
