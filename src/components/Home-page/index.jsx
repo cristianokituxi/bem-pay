@@ -3,12 +3,6 @@ import img1 from './images/avatar.png'
 import img2 from './images/codigo-qr.png'
 import img3 from './images/bate-papo.png'
 import img4 from './images/sair.png'
-
-
-
-
-
-
 import { LogOut } from '../../service/Authentication';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -47,13 +41,17 @@ function HomePage() {
               <Card.Body>
                 <Row>
                   <Col>
-                  <Button variant='link' size='sm' onclik={LogOutFunc}  style={{
-                       width: "49px"
-                      }} ><img src={img4} alt="" width={40}
-                      style={{
-                       // marginLeft: "64px"
-                      }}
-                    /></Button>
+                  <Button variant='link' size='sm' onClick={LogOutFunc}  style={{
+                    width: "49px"
+                   }} >
+                    
+                    <img src={img4} alt="" width={40}
+                   style={{
+                    // marginLeft: "64px"
+                   }}
+                    />
+                    
+                    </Button>
                   </Col>
                 </Row>
                 <Row>
